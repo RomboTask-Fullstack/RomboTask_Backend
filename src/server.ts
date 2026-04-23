@@ -9,8 +9,10 @@ import morgan from "morgan";
 import { serverErrorHandler } from "./middleware/errorHandler";
 
 
-dotenv.config();
-connectDB();
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config()
+}
+connectDB()
 
 export const app = express()
 
