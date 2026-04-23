@@ -36,13 +36,10 @@ export class AuthEmail {
             "Content-Type": "application/json",
           },
         }
-      );
-
-      console.log("EMAIL CONFIRMACIÓN ENVIADO:", response.data.messageId);
-
+      )
     } catch (error: any) {
       console.error("Error enviando email de confirmación:", error.response?.data || error.message);
-      throw new Error("Error al enviar email de confirmación");
+      throw new Error("Error al enviar email de confirmación")
     }
   };
 
@@ -75,13 +72,10 @@ export class AuthEmail {
             "Content-Type": "application/json",
           },
         }
-      );
-
-      console.log("EMAIL RESET ENVIADO:", response.data.messageId);
-
+      )
     } catch (error: any) {
-      console.error("Error enviando email de reset:", error.response?.data || error.message);
+      console.error("Error enviando email de reset:", error.response?.data || error.message)
       throw new Error("Error al enviar email de recuperación");
     }
-  };
+  }
 }
