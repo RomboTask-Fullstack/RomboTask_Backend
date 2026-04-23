@@ -15,6 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 export const app = express()
 
+app.get('/', (req, res) => {
+    res.send('Backend Rombo Task - API is running')
+})
+
 app.use(morgan('dev'))
 
 app.use(cors(corsConfig));
