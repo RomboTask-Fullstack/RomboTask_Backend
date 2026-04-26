@@ -104,6 +104,7 @@ router.patch('/:projectId/tasks/:taskId/status',
 
 /**Routes for teams */
 router.post('/:projectId/team/find',
+    hasManagerAuthorization,
     body('email')
         .isEmail().withMessage('El correo electrónico ha de tener un formato válido'),
     handleInputError,
@@ -111,6 +112,7 @@ router.post('/:projectId/team/find',
 )
 
 router.post('/:projectId/team',
+    hasManagerAuthorization,
     body('id')
         .isMongoId().withMessage('ID de equipo no válido'),
     handleInputError,
@@ -118,6 +120,7 @@ router.post('/:projectId/team',
 )
 
 router.delete('/:projectId/team/:memberId',
+    hasManagerAuthorization,
     param('projectId').isMongoId().withMessage('ID de proyecto no válido'),
     param('memberId')
         .isMongoId().withMessage('ID de equipo no válido'),
@@ -126,6 +129,7 @@ router.delete('/:projectId/team/:memberId',
 )
 
 router.get('/:projectId/team/find-all',
+    hasManagerAuthorization,
     TeamMemberController.getMembersByProject
 )
 

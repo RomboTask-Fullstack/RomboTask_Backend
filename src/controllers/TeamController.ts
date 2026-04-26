@@ -24,14 +24,9 @@ export class TeamMemberController {
     static addMemberById = async (req: Request, res: Response, next: NextFunction) => {
 
         const { id } = req.body
+        
         try {
             const user = await User.findById(id).select('_id')
-            if (req.project.manager.toString() !== req.user.id.toString()) {
-                return next({
-                    status: 403,
-                    message: 'Acción no permitida'
-                })
-            }
             if (!user) {
                 return next({
                     status: 404,
@@ -56,14 +51,10 @@ export class TeamMemberController {
     static deleteMember = async (req: Request, res: Response, next: NextFunction) => {
 
         const { memberId } = req.params
+
         try {
             const user = await User.findById(memberId).select('_id')
-            if (req.project.manager.toString() !== req.user.id.toString()) {
-                return next({
-                    status: 403,
-                    message: 'Acción no permitida'
-                })
-            }
+
             if (!user) {
                 return next({
                     status: 404,
